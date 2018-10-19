@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import Resizer from './Resizer';
-// import { entityActions } from '../actions.entities';
-import { entityStyle, inputStyle } from '../styles/feStyles';
-import { defaultPropsFE, _styles } from '../styles/_styles';
-// import TextareaAutosize from 'react-autosize-textarea';
+import { entityStyle } from '../styles/feStyles';
+import { _styles } from '../styles/_styles';
 import { helpers } from '../../lib/helpers';
 
 class Prompt extends Component {
-  constructor() {
-    super();
-    // this.mouseDown_handler = this.mouseDown_handler.bind(this);
-  }
+  // constructor() {
+  //   super();
+  //   // this.mouseDown_handler = this.mouseDown_handler.bind(this);
+  // }
 
   // mouseDown_handler(event) {
   //   entityActions.mouseDown_handler(event, this.props);
@@ -21,7 +18,7 @@ class Prompt extends Component {
   render() {
     const promptStyle = {
       ...entityStyle(this.props.width),
-      gridTemplateColumns: 'repeat(' + `${this.props.width}` + ', [col] 1fr)',
+      gridTemplateColumns: `repeat(${this.props.width}, [col] 1fr)`,
       gridColumn: `span ${this.props.width}`,
       // backgroundColor: ''white'',
       // padding: '4px',

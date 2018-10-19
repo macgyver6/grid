@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { entityWrapperStyle, entitySubWrapperStyle } from './styles/feStyles';
+import { entitySubWrapperStyle } from './styles/feStyles';
 import { _styles } from './styles/_styles';
 
 class DraggableCore extends Component {
   render(props) {
-    console.log();
     return (
       <div
         id={`${this.props.model.type}.${this.props.model.id}.subWrapper`}

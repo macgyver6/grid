@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 // import { saveProperty, dragMovement } from "../../redux-modules/dnd/actions";
 import { setGridWidth } from '../redux-modules/actions';
 import { utility } from '../lib/utility';
-import { address } from '../lib/address';
 import FormEntityContainer from './FormEntityContainer';
 
 const divStyle = {
@@ -45,9 +44,9 @@ class FormComponent extends Component {
   }
 
   componentDidMount() {
-    this.props.setGridWidth({
-      gridWidth: utility.round(this.gridWidth.current.offsetWidth / 24, 1),
-    });
+    this.props.setGridWidth(
+      utility.round(this.gridWidth.current.offsetWidth / 24, 1)
+    );
   }
 
   //

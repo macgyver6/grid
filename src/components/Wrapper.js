@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { entityWrapperStyle, entitySubWrapperStyle } from './styles/feStyles';
+import { entityWrapperStyle } from './styles/feStyles';
 
 class Wrapper extends Component {
   render(props) {

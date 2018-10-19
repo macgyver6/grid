@@ -5,7 +5,7 @@ import { helpers } from '../lib/helpers';
 import Pend from './subentities/Pend';
 import Prompt from './subentities/Prompt';
 import Wrapper from './Wrapper';
-import SubWrapper from './DraggableCore';
+import DraggableCore from './DraggableCore';
 // import {
 //     entitySelected,
 //     entityDropped,
@@ -92,7 +92,10 @@ class FormEntityContainer extends Component {
           />
         ) : null}
 
-        <SubWrapper model={this.props.model}>
+        <DraggableCore
+          model={this.props.model}
+          isResizing={this.props.isResizing}
+        >
           {'prePromptWidth' in this.props.model &&
           this.props.model.prePromptWidth > 0 ? (
             <Prompt
@@ -131,7 +134,7 @@ class FormEntityContainer extends Component {
               idStart={helpers.calcStart(this.props.model, 'postPrompt')}
             />
           ) : null}
-        </SubWrapper>
+        </DraggableCore>
 
         {this.props.model.append > 0 ? (
           <Pend
@@ -171,7 +174,7 @@ const mapStateToProps = (state, ownProps) => ({
       }
     : {}),
   id: ownProps.id,
-  //   isResizing: state.dnd.isResizing,
+  isResizing: state.app.isResizing,
   //   isDragging: state.dnd.isDragging,
   currententity: state.app.currententity,
 });

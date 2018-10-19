@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { helpers } from '../../lib/helpers';
-import { entityStyle, inputStyle } from '../styles/feStyles';
+import { entityStyle } from '../styles/feStyles';
 import Resizer from '../subentities/Resizer';
 
 class FormEntityFragment extends Component {

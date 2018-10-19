@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Resizer from '../subentities/Resizer';
 import { helpers } from '../../lib/helpers';
 // import { get } from '../../../redux-modules/form/actions';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 class Pend extends Component {

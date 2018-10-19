@@ -1,8 +1,5 @@
 import { address } from './address';
 
-const round = (value, decimals) =>
-  Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
-
 export const helpers = {
   /**
    *

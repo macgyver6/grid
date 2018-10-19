@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { inputStyle } from '../styles/feStyles';
 
 class FS_Fragment extends Component {
   render(props) {
