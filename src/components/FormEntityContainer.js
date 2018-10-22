@@ -79,18 +79,16 @@ class FormEntityContainer extends Component {
   }
 
   render() {
-    console.log(this.props.model);
-
     return (
       <Wrapper model={this.props.model}>
-        {this.props.model.prepend > 0 ? (
+        {/* {this.props.model.prepend > 0 ? (
           <Pend
             id={this.props.id}
             mode="prepend"
             width={this.props.model['prepend']}
             idStart={helpers.calcStart(this.props.model, 'prepend')}
           />
-        ) : null}
+        ) : null} */}
 
         <DraggableCore
           model={this.props.model}
@@ -105,7 +103,6 @@ class FormEntityContainer extends Component {
               prompt={this.props.model.prePrompt}
               type={this.props.model.type}
               externalIdentifier={this.props.model.externalIdentifier}
-              idStart={helpers.calcStart(this.props.model, 'prePrompt')}
               model={this.props.model}
             />
           ) : null}
@@ -131,12 +128,11 @@ class FormEntityContainer extends Component {
               type={this.props.model.type}
               externalIdentifier={this.props.model.externalIdentifier}
               model={this.props.model}
-              idStart={helpers.calcStart(this.props.model, 'postPrompt')}
             />
           ) : null}
         </DraggableCore>
 
-        {this.props.model.append > 0 ? (
+        {/* {this.props.model.append > 0 ? (
           <Pend
             id={this.props.id}
             mode="append"
@@ -144,7 +140,7 @@ class FormEntityContainer extends Component {
             idStart={helpers.calcStart(this.props.model, 'append')}
             model={this.props}
           />
-        ) : null}
+        ) : null} */}
 
         {/*lastInRow(entityAddress) ? (
         <AddToEnd

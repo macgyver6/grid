@@ -3,14 +3,11 @@ import { _styles } from './_styles';
 export const calcTotal = entity => {
   if ('prePromptWidth' in entity) {
     const resultingSum =
-      entity.prepend +
-      parseFloat(entity.prePromptWidth) +
-      entity.width +
-      entity.postPromptWidth +
-      parseFloat(entity.append);
+      parseFloat(entity.prePromptWidth) + entity.width + entity.postPromptWidth;
+
     return resultingSum;
   } else {
-    return entity.prepend + entity.width + entity.append;
+    return entity.width;
   }
 };
 

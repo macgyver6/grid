@@ -6,7 +6,8 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './redux-modules/index';
-import FormComponent from './components/Form';
+import FormComponent from './components/layout/Form';
+import LayoutRoot from './components/layout/LayoutRoot';
 export const store = createStore(
   rootReducer,
   compose(
@@ -15,9 +16,23 @@ export const store = createStore(
   )
 );
 
+export const backgroundPanelStyle = {
+  display: 'flex',
+  justifyContent: 'flex-start',
+  width: window.screen.availWidth * 0.98,
+  // height: window.screen.availHeight * 0.89,
+  backgroundColor: 'white',
+};
+export const middlePanelStyle = {
+  width: '50%',
+  height: '100%',
+  backgroundColor: 'white',
+  margin: '20px 20px',
+};
+
 ReactDOM.render(
   <Provider store={store}>
-    <FormComponent />
+    <LayoutRoot />
   </Provider>,
   document.getElementById('root')
 );

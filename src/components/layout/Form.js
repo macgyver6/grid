@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { address } from '../../lib/address';
 // import { saveProperty, dragMovement } from "../../redux-modules/dnd/actions";
-import { setGridWidth } from '../redux-modules/actions';
-import { utility } from '../lib/utility';
-import FormEntityContainer from './FormEntityContainer';
+import { setGridWidth } from '../../redux-modules/actions';
+import { utility } from '../../lib/utility';
+import FormEntityContainer from '../FormEntityContainer';
 
 const divStyle = {
   // margin: '20px',

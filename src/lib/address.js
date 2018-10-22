@@ -43,6 +43,7 @@ import FormEntityContainer from '../components/FormEntityContainer';
 // import SubjectInputValidator from '../containers/validations/data/SubjectInputValidator';
 import TI_Fragment from '../components/input_fragments/TI_Fragment';
 import FS_Fragment from '../components/input_fragments/FS_Fragment';
+import Padding_Fragment from '../components/input_fragments/Padding_Fragment';
 // import TA_Fragment from '../components/FormEntities/input_fragments/TA_Fragment';
 // import TB_Fragment from '../components/FormEntities/input_fragments/TB_Fragment';
 // import IB_Fragment from '../components/FormEntities/input_fragments/IB_Fragment';
@@ -57,94 +58,119 @@ export const address = {
     };
     return FormEntities[modelInstance] || FormEntities.default;
   },
-
   lookupFragment: modelInstance => {
     const Fragments = {
       FormSection: FS_Fragment,
       TextInput: TI_Fragment,
+      Padding: Padding_Fragment,
     };
     return Fragments[modelInstance] || console.log('OOB: ', modelInstance);
   },
-
-  //   lookupFragment: modelInstance => {
-  //     const entity = modelInstance.split('.')[0];
-  //     console.log(modelInstance);
-  //     if (modelInstance instanceof Form) {
-  //       return FormComponent;
-  //     } else if (entity === 'FormSection') {
-  //       return TI_Fragment;
-  //     } else if (entity === 'CDSTextInput') {
-  //       return TI_Fragment;
-  //     } else if (entity === 'TextInput') {
-  //       return TI_Fragment;
-  //     } else if (entity === 'TextArea') {
-  //       return TA_Fragment;
-  //     } else if (entity === 'CheckBox') {
-  //       return TI_Fragment;
-  //     } else if (entity === 'SelectionInput') {
-  //       return SI_Fragment;
-  //     } else if (entity === 'TextBlock') {
-  //       return TB_Fragment;
-  //     } else if (entity === 'ImageBlock') {
-  //       return IB_Fragment;
-  //     } else if (entity === 'AutoSuggestInput') {
-  //       return AI_Fragment;
-  //     } else if (entity === 'EchoInput') {
-  //       return TI_Fragment;
-  //     }
-  //   },
-
-  //   whichEntity: modelInstance => {
-  //     if (
-  //       modelInstance instanceof CDSTextInput ||
-  //       modelInstance === 'CDSTextInput'
-  //     ) {
-  //       return CDSTextInputProperty;
-  //     } else if (
-  //       modelInstance instanceof FormSection ||
-  //       modelInstance === 'FormSection'
-  //     ) {
-  //       return FormSectionProperty;
-  //     } else if (
-  //       modelInstance instanceof TextInput ||
-  //       modelInstance === 'TextInput'
-  //     ) {
-  //       return TextInputProperty;
-  //     } else if (
-  //       modelInstance instanceof TextArea ||
-  //       modelInstance === 'TextArea'
-  //     ) {
-  //       return TextAreaProperty;
-  //     } else if (
-  //       modelInstance instanceof CheckBox ||
-  //       modelInstance === 'CheckBox'
-  //     ) {
-  //       return CheckBoxProperty;
-  //     } else if (
-  //       modelInstance instanceof SelectionInput ||
-  //       modelInstance === 'SelectionInput'
-  //     ) {
-  //       return SelectionInputProperty;
-  //     } else if (
-  //       modelInstance instanceof TextBlock ||
-  //       modelInstance === 'TextBlock'
-  //     ) {
-  //       return TextBlockProperty;
-  //     } else if (
-  //       modelInstance instanceof ImageBlock ||
-  //       modelInstance === 'ImageBlock'
-  //     ) {
-  //       return ImageBlockProperty;
-  //     } else if (
-  //       modelInstance instanceof AutoSuggestInput ||
-  //       modelInstance === 'AutoSuggestInput'
-  //     ) {
-  //       return autoSuggestProperty;
-  //     } else if (
-  //       modelInstance instanceof EchoInput ||
-  //       modelInstance === 'EchoInput'
-  //     ) {
-  //       return EchoProperty;
-  //     }
-  //   },
+  getHumanName: entityType => {
+    switch (entityType) {
+      case 'CDSTextInput':
+        return 'CDS Text Input';
+      case 'TextInput':
+        return 'Text Input';
+      case 'TextArea':
+        return 'Text Area';
+      case 'CheckBox':
+        return 'Check Box';
+      case 'SelectionInput':
+        return 'Selection Input';
+      case 'TextBlock':
+        return 'Text Block';
+      case 'ImageBlock':
+        return 'Image Block';
+      case 'AutoSuggestInput':
+        return 'Auto-suggest';
+      case 'Echo':
+        return 'Echo Input';
+      case 'FormSection':
+        return 'Form Section';
+      default:
+        return null;
+    }
+  },
 };
+//   lookupFragment: modelInstance => {
+//     const entity = modelInstance.split('.')[0];
+//     console.log(modelInstance);
+//     if (modelInstance instanceof Form) {
+//       return FormComponent;
+//     } else if (entity === 'FormSection') {
+//       return TI_Fragment;
+//     } else if (entity === 'CDSTextInput') {
+//       return TI_Fragment;
+//     } else if (entity === 'TextInput') {
+//       return TI_Fragment;
+//     } else if (entity === 'TextArea') {
+//       return TA_Fragment;
+//     } else if (entity === 'CheckBox') {
+//       return TI_Fragment;
+//     } else if (entity === 'SelectionInput') {
+//       return SI_Fragment;
+//     } else if (entity === 'TextBlock') {
+//       return TB_Fragment;
+//     } else if (entity === 'ImageBlock') {
+//       return IB_Fragment;
+//     } else if (entity === 'AutoSuggestInput') {
+//       return AI_Fragment;
+//     } else if (entity === 'EchoInput') {
+//       return TI_Fragment;
+//     }
+//   },
+
+//   whichEntity: modelInstance => {
+//     if (
+//       modelInstance instanceof CDSTextInput ||
+//       modelInstance === 'CDSTextInput'
+//     ) {
+//       return CDSTextInputProperty;
+//     } else if (
+//       modelInstance instanceof FormSection ||
+//       modelInstance === 'FormSection'
+//     ) {
+//       return FormSectionProperty;
+//     } else if (
+//       modelInstance instanceof TextInput ||
+//       modelInstance === 'TextInput'
+//     ) {
+//       return TextInputProperty;
+//     } else if (
+//       modelInstance instanceof TextArea ||
+//       modelInstance === 'TextArea'
+//     ) {
+//       return TextAreaProperty;
+//     } else if (
+//       modelInstance instanceof CheckBox ||
+//       modelInstance === 'CheckBox'
+//     ) {
+//       return CheckBoxProperty;
+//     } else if (
+//       modelInstance instanceof SelectionInput ||
+//       modelInstance === 'SelectionInput'
+//     ) {
+//       return SelectionInputProperty;
+//     } else if (
+//       modelInstance instanceof TextBlock ||
+//       modelInstance === 'TextBlock'
+//     ) {
+//       return TextBlockProperty;
+//     } else if (
+//       modelInstance instanceof ImageBlock ||
+//       modelInstance === 'ImageBlock'
+//     ) {
+//       return ImageBlockProperty;
+//     } else if (
+//       modelInstance instanceof AutoSuggestInput ||
+//       modelInstance === 'AutoSuggestInput'
+//     ) {
+//       return autoSuggestProperty;
+//     } else if (
+//       modelInstance instanceof EchoInput ||
+//       modelInstance === 'EchoInput'
+//     ) {
+//       return EchoProperty;
+//     }
+//   },

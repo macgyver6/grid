@@ -1,3 +1,5 @@
+import * as model from '../model/TextInput';
+
 export const setGridWidth = gridWidth => ({
   type: 'SETGRIDWIDTH',
   gridWidth,
@@ -19,4 +21,14 @@ export const entityResized = (entityId, newProps) => ({
   type: 'ENTITYRESIZED',
   entityId,
   newProps,
+});
+
+export const addStart = entity => ({
+  type: 'ADDSTART',
+  entity: model[entity](),
+});
+
+export const addEnd = entity => ({
+  type: 'ADDEND',
+  entity,
 });

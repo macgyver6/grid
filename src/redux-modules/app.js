@@ -9,6 +9,8 @@ const app = (state = defaultAppState, action) => {
     SETGRIDWIDTH: { ...state, gridWidth: action.gridWidth },
     RESIZESTART: { ...state, isResizing: true },
     RESIZEEND: { ...state, isResizing: false },
+    ADDSTART: { ...state, isAddingInput: action.entity },
+    ADDEND: { ...state, isAddingInput: false },
   };
 
   return actions[action.type] || actions.default;
