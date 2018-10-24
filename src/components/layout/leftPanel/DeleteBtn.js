@@ -11,9 +11,9 @@ class DeleteBtn extends Component {
   }
   drop_handler(event) {
     const droppedEntity = event.dataTransfer.getData('hash');
-    const sectionId = event.dataTransfer.getData('sectionId');
+    const sectionUUID = event.dataTransfer.getData('sectionUUID');
 
-    this.props.deleteEntity(droppedEntity, sectionId);
+    this.props.deleteEntity(droppedEntity, sectionUUID);
 
     /** handle case where the activeTab is deleted */
     // if (data.address[0] === 0) {

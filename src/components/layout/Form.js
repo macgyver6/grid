@@ -63,7 +63,7 @@ class FormComponent extends Component {
           {React.createElement(FormEntityContainer, {
             id: this.props.id,
             // hash: element,
-            sectionId: this.props.activeTab,
+            sectionUUID: 0,
             // key: index,
           })}
         </div>

@@ -13,7 +13,12 @@ import DraggableCore from './DraggableCore';
 //     incrementAsyncTest,
 // } from '../../redux-modules/dnd/actions';
 // import { replace } from '../../redux-modules/form/actions';
-import { entitySelected } from '../redux-modules/actions';
+import {
+  entitySelected,
+  dragStart,
+  dragEnd,
+  drop,
+} from '../redux-modules/actions';
 import { address } from '../lib/address';
 import _ from 'lodash';
 import FormEntityFragment from './input_fragments/FormEntityFragment';
@@ -27,33 +32,43 @@ class FormEntityContainer extends Component {
     this.dragOverHandler = this.dragOverHandler.bind(this);
     this.dragstart_handler = this.dragstart_handler.bind(this);
     this.mouseUp_handler = this.mouseUp_handler.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   mouseUp_handler(event) {
     this.props.saveProperty({ isResizing: false });
   }
 
+  clickHandler(event) {
+    console.log(event.target);
+  }
+
   mouseDown_handler(event) {
     event.stopPropagation();
-    console.log(this.props.sectionId);
+    console.log(this.props.sectionUUID);
 
     this.props.entitySelected(
       `${this.props.model.type}.${this.props.model.id}`,
       Number(event.target.id),
-      this.props.sectionId
+      this.props.sectionUUID
     );
   }
 
   dropHandler(event) {
     event.stopPropagation();
-    this.props.saveProperty({ isDragging: false });
-    this.props.entityDropped(
-      `${this.props.model.type}.${this.props.model.id}`,
-      Number(event.target.id),
-      this.props.model[helpers.widthAccessor(event.target.className)],
-      event.target.className,
-      helpers.widthAccessor(event.target.className)
-    );
+    // event.stopPropagation();
+    // this.props.saveProperty({ isDragging: false });
+    // this.props.entityDropped(
+    //   `${this.props.model.type}.${this.props.model.id}`,
+    //   Number(event.target.id),
+    //   this.props.model[helpers.widthAccessor(event.target.className)],
+    //   event.target.className,
+    //   helpers.widthAccessor(event.target.className)
+    // );
+
+    this.props.drop(this.props.model.uuid, this.props.sectionUUID, {
+      screenX: event.screenX,
+    });
   }
 
   dragOverHandler(event) {
@@ -62,20 +77,24 @@ class FormEntityContainer extends Component {
   }
 
   dragstart_handler(event) {
-    event.dataTransfer.setData(
-      'hash',
-      `${this.props.model.type}.${this.props.model.id}`
-    );
-    event.dataTransfer.setData('sectionId', `${this.props.sectionId}`);
-    event.dataTransfer.setData('totalWidth', 6);
-    this.props.saveProperty({
-      currentEntityObj: this.props.model,
-      //   subWrapperWidth: widthSubWrapper(this.props.model),
-    });
+    event.stopPropagation();
+    // event.dataTransfer.setData(
+    //   'hash',
+    //   `${this.props.model.type}.${this.props.model.id}`
+    // );
+    // event.dataTransfer.setData('sectionUUID', `${this.props.sectionUUID}`);
+    // event.dataTransfer.setData('totalWidth', 6);
+    // this.props.saveProperty({
+    // currentEntityObj: this.props.model,
+    //   subWrapperWidth: widthSubWrapper(this.props.model),
+    // });
 
-    if (!this.props.isResizing) {
-      this.props.saveProperty({ isDragging: true });
-    }
+    // if (!this.props.isResizing) {
+    //   this.props.saveProperty({ isDragging: true });
+    // }
+    this.props.dragStart(this.props.model.uuid, this.props.sectionUUID, {
+      screenX: event.screenX,
+    });
   }
 
   render() {
@@ -93,6 +112,9 @@ class FormEntityContainer extends Component {
         <DraggableCore
           model={this.props.model}
           isResizing={this.props.isResizing}
+          dragStartHandler={this.dragstart_handler}
+          dropHandler={this.dropHandler}
+          // dragEndHandler = {this.props.dragend}
         >
           {'prePromptWidth' in this.props.model &&
           this.props.model.prePromptWidth > 0 ? (
@@ -113,7 +135,10 @@ class FormEntityContainer extends Component {
           >
             {this.props.model.type === 'FormSection'
               ? this.props.children.map(child => (
-                  <ConnectedFormEntityContainer id={child.id} />
+                  <ConnectedFormEntityContainer
+                    id={child.id}
+                    sectionUUID={this.props.model.uuid}
+                  />
                 ))
               : null}
           </FormEntityFragment>
@@ -191,6 +216,9 @@ const ConnectedFormEntityContainer = connect(
   mapStateToProps,
   {
     entitySelected,
+    dragStart,
+    dragEnd,
+    drop,
   }
 )(FormEntityContainer);
 

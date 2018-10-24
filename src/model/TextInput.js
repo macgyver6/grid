@@ -29,6 +29,7 @@ export function FormSection(properties) {
 
 export function Padding(properties) {
   const PaddingDefault = {
+    uuid: uuidv4(),
     type: 'Padding',
     width: 1,
   };
